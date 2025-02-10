@@ -1,36 +1,26 @@
-import React, { useEffect } from 'react'
 import NavBar from './NavBar'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
+import { useEffect } from 'react'
 import axios from 'axios'
 import { BASEURL } from '../utils/Constants'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addUser } from '../utils/userSlice'
 
-const Body = () => {
+
+const Body = () =>{
   const dispatch=useDispatch();
-  const navigate=useNavigate();
-  const userData=useSelector((store)=>store.user)
-  const fetchUser=async ()=>{
-    try {
-      const user= await axios.get(BASEURL+"/profile/view",{withCredentials:true});
-      dispatch(addUser(user.data))
-    } catch (error) {
-      if(error.status==401){
-        console.log("Please Login...");
-      }
-      navigate("/login")
-    }
+  const fetchUser=async()=>{
+    console.log("Getting user....");
+    const userdata=await axios.get(BASEURL+"/profile/view",{withCredentials:true});
+    console.log("UserData : ",userdata.data);
+    dispatch(addUser(userdata.data))
   }
   useEffect(()=>{
-    if(!userData){
-      fetchUser();
-    }
-    
-  },[])
-
+    fetchUser();
+  })
   return (
-    <div>
+    <div className='bg-transparent'>
         <NavBar/>
         <Outlet/>
         <Footer/>
@@ -38,4 +28,4 @@ const Body = () => {
   )
 }
 
-export default Body
+export default Body;

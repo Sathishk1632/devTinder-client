@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import EditProfile from './EditProfile'
+
+
+
 
 const Profile = () => {
+  
+  
   return (
-    <div>Profile</div>
+    <div className="flex justify-center">
+      <EditProfile/>
+    </div>
   )
 }
 

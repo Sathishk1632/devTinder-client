@@ -1,9 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BASEURL } from '../utils/Constants';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { removeUser } from '../utils/userSlice';
+import { removeFeed } from '../utils/feedSlice';
+
+import Login from './Login';
+import { removeConnections } from '../utils/connectionSlice';
 
 
 const NavBar = () => {
@@ -25,9 +29,10 @@ const NavBar = () => {
         try {
             console.log("Logging Out....");
             await axios.get(BASEURL+"/auth/logout",{withCredentials:true});
+            dispatch(removeConnections());
+            dispatch(removeFeed());
             dispatch(removeUser());
-            return navigate("/login")
-            
+            navigate("/login")
         } catch (error) {
             
         }
@@ -35,14 +40,15 @@ const NavBar = () => {
         
     }
     
+    
   return (
     <div>
         <div className="navbar bg-blue-100">
         <div className="flex-1">
-            <a className="btn btn-ghost normal-case text-xl text-black">.Connect</a>
+            <Link to="/" className="btn btn-ghost normal-case text-xl text-black">.Connect</Link>
         </div>
         {user && ( <div className="flex gap-2">
-            <p className="px-4 text-black">Welcome {user.firstName}</p>
+        <p className="px-4 text-black">Welcome {user && user?.firstName}</p> 
         <div className="dropdown dropdown-end items-center">
            
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -53,12 +59,11 @@ const NavBar = () => {
             </label>
             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                 <li>
-                <a className="justify-between">
+                <Link to="/profile" className="justify-between">
                     Profile
-                    <span className="badge">New</span>
-                </a>
+                </Link>
                 </li>
-                <li><a>Settings</a></li>
+                <li><Link to="/connections">Connections</Link></li>
                 <li onClick={handleLogout}><a>Logout</a></li>
             </ul>
             </div>
