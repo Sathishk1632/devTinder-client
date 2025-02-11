@@ -71,7 +71,7 @@ const EditProfile = () => {
             </div>
         </div>
         <div>
-      <UserCard {...user}/>
+      <UserCard user={user}/>
         </div>
     </div>)
           }

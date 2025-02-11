@@ -4,10 +4,11 @@ import { BASEURL } from '../utils/Constants';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { removeUser } from '../utils/userSlice';
-import { removeFeed } from '../utils/feedSlice';
+import { removeAllFeed, removeFeed } from '../utils/feedSlice';
 
 import Login from './Login';
 import { removeConnections } from '../utils/connectionSlice';
+import { removeAllRequests, removeRequests } from '../utils/requestsSlice';
 
 
 const NavBar = () => {
@@ -30,7 +31,8 @@ const NavBar = () => {
             console.log("Logging Out....");
             await axios.get(BASEURL+"/auth/logout",{withCredentials:true});
             dispatch(removeConnections());
-            dispatch(removeFeed());
+            dispatch(removeAllRequests());
+            dispatch(removeAllFeed());
             dispatch(removeUser());
             navigate("/login")
         } catch (error) {
@@ -64,6 +66,7 @@ const NavBar = () => {
                 </Link>
                 </li>
                 <li><Link to="/connections">Connections</Link></li>
+                <li><Link to="/requests">Requests</Link></li>
                 <li onClick={handleLogout}><a>Logout</a></li>
             </ul>
             </div>
