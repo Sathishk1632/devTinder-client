@@ -17,6 +17,7 @@ const EditProfile = () => {
     const [gender,setGender]=useState(user.gender)
     const [skills,setSkills]=useState(user.skills)
     const [photoUrl,setPhotoUrl]=useState(user.photoUrl);
+    const [profilePic,setProfilePic]=useState("");
 
     const handleUpdateProfile=async()=>{
       console.log("Updating profile");
@@ -37,6 +38,15 @@ const EditProfile = () => {
         
       } catch (error) {
         console.log("ERROR : ",error);
+      }
+    }
+    const handleUpload=async()=>{
+      console.log("upload");
+      
+      try {
+        
+      } catch (error) {
+        
       }
     }
     
@@ -63,6 +73,9 @@ const EditProfile = () => {
                     <input type="text" placeholder="Skills" value={skills} className="input input-bordered input-warning w-full max-w-xs mt-5" onChange={(e)=>setSkills(e.target.value)}/>
 
                     <input type="text" placeholder="PhotoUrl" value={photoUrl} className="input input-bordered input-warning w-full max-w-xs mt-5" onChange={(e)=>setPhotoUrl(e.target.value)}/>
+
+                    <input type="file" placeholder="Profile Picture" value={profilePic} className="input input-bordered input-warning w-full max-w-xs mt-5" onChange={(event)=>{setProfilePic(event.target.files[0])}}/>
+                    <button onClick={handleUpload}>upload</button>
                 </div>
                 <div className="card-actions mt-5">
                     <button className="btn btn-success w-fit" onClick={handleUpdateProfile}>Save Profile</button>

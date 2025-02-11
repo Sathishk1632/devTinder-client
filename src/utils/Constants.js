@@ -1,1 +1,1 @@
-export const BASEURL="https://sathishk1632.github.io/devTinder/"
+export const BASEURL="/api"
