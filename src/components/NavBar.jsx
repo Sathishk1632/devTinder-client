@@ -56,7 +56,7 @@ const NavBar = () => {
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             
                 <div className="w-10 rounded-full">
-                <img src={user.photoUrl}/>
+                <img src={user.photoUrl||"https://static.vecteezy.com/system/resources/previews/021/548/095/non_2x/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg"}/>
                 </div>
             </label>
             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">

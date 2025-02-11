@@ -29,7 +29,7 @@ const Connections = () => {
         {userData.map((user) => (
           <div className='flex justify-start bg-base-300 w-1/3 items-center shadow-white my-4 rounded' key={user._id}>
             <div className="pl-4">
-              <img src={user.photoUrl} alt="" className='w-16 h-16 rounded-full' />
+              <img src={user.photoUrl||"https://static.vecteezy.com/system/resources/previews/021/548/095/non_2x/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg"} alt="" className='w-16 h-16 rounded-full' />
             </div>
             <div className="pl-10">
               <h1>{user.firstName+" "+user.lastName}</h1>

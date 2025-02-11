@@ -22,7 +22,7 @@ const UserCard = ({user}) => {
   <div className="card bg-base-100 w-96 shadow-xl max-h-70" key={user._id}>
   <figure>
     <img
-      src={user.photoUrl}
+      src={user.photoUrl||"https://static.vecteezy.com/system/resources/previews/021/548/095/non_2x/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg"}
       alt={user.firstName} 
       height={100}/>
   </figure>

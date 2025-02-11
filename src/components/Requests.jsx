@@ -37,7 +37,7 @@ const Requests = () => {
         {req.map((r) => (
           <div className='flex justify-start bg-base-300 w-1/2 items-center shadow-white my-4 rounded' key={r._id}>
             <div className="pl-4">
-              <img src={r.fromId.photoUrl} alt="" className='w-16 h-16 rounded-full' />
+              <img src={r.fromId.photoUrl||"https://static.vecteezy.com/system/resources/previews/021/548/095/non_2x/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg"} alt="" className='w-16 h-16 rounded-full' />
             </div> 
             <div className="pl-10">
               <h1>{r.fromId.firstName+" "+r.fromId.lastName}</h1>
