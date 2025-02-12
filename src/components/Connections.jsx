@@ -21,7 +21,7 @@ const Connections = () => {
   const DisplayUser = () => {
     // Check if userData is an array and has elements
     if (!userData || userData.length === 0) {
-      return <p className='text-red-600 text-center text-2xl'>No connections available.</p>;
+      return <p className='text-red-600 text-center text-2xl my-20'>No connections available.</p>;
     }
 
     return (

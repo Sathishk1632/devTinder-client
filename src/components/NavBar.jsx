@@ -34,7 +34,7 @@ const NavBar = () => {
             dispatch(removeAllRequests());
             dispatch(removeAllFeed());
             dispatch(removeUser());
-            navigate("/login")
+            navigate("/")
         } catch (error) {
             
         }
@@ -47,7 +47,7 @@ const NavBar = () => {
     <div>
         <div className="navbar bg-blue-100">
         <div className="flex-1">
-            <Link to="/" className="btn btn-ghost normal-case text-xl text-black">.Connect</Link>
+            <Link to="/feed" className="btn btn-ghost normal-case text-xl text-black">.Connect</Link>
         </div>
         {user && ( <div className="flex gap-2">
         <p className="px-4 text-black">Welcome {user && user?.firstName}</p> 
