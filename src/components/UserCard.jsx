@@ -8,9 +8,9 @@ const UserCard = ({user}) => {
   const dispatch=useDispatch();
   const handleRequests=async(_id,status)=>{
     try {
-      console.log("boooo");
-      
-      const res=await axios.post(`${BASEURL}/request/send/${_id}/${status}`,{},{withCredentials:true});
+      if(status=="INTERESTED"){
+        const res=await axios.post(`${BASEURL}/request/send/${_id}/${status}`,{},{withCredentials:true});
+      }
       dispatch(removeFeed(_id));
     } catch (error) {
       

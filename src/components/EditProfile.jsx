@@ -17,36 +17,32 @@ const EditProfile = () => {
     const [gender,setGender]=useState(user.gender)
     const [skills,setSkills]=useState(user.skills)
     const [photoUrl,setPhotoUrl]=useState(user.photoUrl);
-    const [profilePic,setProfilePic]=useState("");
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const onFileChange = event => {
+      setSelectedFile(event.target.files[0]);
+    };
 
     const handleUpdateProfile=async()=>{
       console.log("Updating profile");
+      const formData = new FormData();
+      formData.append('firstName', firstName);
+      formData.append('lastName',lastName);
+      formData.append('age',age);
+      formData.append('about',about);
+      formData.append('gender',gender);
+      formData.append('photoUrl',photoUrl);
+      formData.append('skills',skills);
+      formData.append('image',selectedFile)
       try {
-        const updatedUser=await axios.patch(BASEURL+"/profile/edit",{
-          firstName,
-          lastName,
-          age,
-          gender,
-          about,
-          skills,
-          photoUrl
-        },{withCredentials:true})
+        const updatedUser=await axios.patch(BASEURL+"/profile/edit",formData,{withCredentials:true});
         toast.success("Profile Saved...")
         if(updatedUser){
-          dispatch(addUser(updatedUser.data.user))
+          dispatch(addUser(updatedUser.data));
         }
         
       } catch (error) {
-        console.log("ERROR : ",error);
-      }
-    }
-    const handleUpload=async()=>{
-      console.log("upload");
-      
-      try {
-        
-      } catch (error) {
-        
+        toast.error(error.response.data)
       }
     }
     
@@ -72,10 +68,12 @@ const EditProfile = () => {
 
                     <input type="text" placeholder="Skills" value={skills} className="input input-bordered input-warning w-full max-w-xs mt-5" onChange={(e)=>setSkills(e.target.value)}/>
 
-                    <input type="text" placeholder="PhotoUrl" value={photoUrl} className="input input-bordered input-warning w-full max-w-xs mt-5" onChange={(e)=>setPhotoUrl(e.target.value)}/>
-
-                    <input type="file" placeholder="Profile Picture" value={profilePic} className="input input-bordered input-warning w-full max-w-xs mt-5" onChange={(event)=>{setProfilePic(event.target.files[0])}}/>
-                    <button onClick={handleUpload}>upload</button>
+                    {/* <input type="text" placeholder="PhotoUrl" value={photoUrl} className="input input-bordered input-warning w-full max-w-xs mt-5" onChange={(e)=>setPhotoUrl(e.target.value)}/> */}
+                    <div className='mt-4'>
+                    <label className='text-left mt-4'>Profile pic :</label>
+                    <input type="file" onChange={onFileChange} placeholder='Profil picture'/>
+                    </div>
+                    
                 </div>
                 <div className="card-actions mt-5">
                     <button className="btn btn-success w-fit" onClick={handleUpdateProfile}>Save Profile</button>

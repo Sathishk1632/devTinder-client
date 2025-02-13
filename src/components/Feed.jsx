@@ -18,8 +18,6 @@ const Feed = () => {
     getFeed();
   },[])
 
-  console.log("FEED : ",feed);
-  
 
 return (
     feed && feed.length>0?(

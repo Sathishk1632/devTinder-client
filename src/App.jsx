@@ -8,6 +8,7 @@ import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import 'react-toastify/dist/ReactToastify.css'
 import Requests from "./components/Requests";
+import AddNewPost from "./components/AddNewPost";
 export default function App() {
   return (
     <>
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/feed" element={<Feed/>}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path="/connections" element={<Connections/>}/>
+          <Route path="/newPost" element={<AddNewPost/>}/>
           <Route path="/requests" element={<Requests/>}/>
         </Route>
       </Routes>

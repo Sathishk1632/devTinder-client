@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BASEURL } from '../utils/Constants';
 import { Link, useNavigate } from 'react-router-dom';
@@ -45,7 +45,7 @@ const NavBar = () => {
     
   return (
     <div>
-        <div className="navbar bg-blue-100">
+        <div className="navbar navbar-center bg-blue-100">
         <div className="flex-1">
             <Link to="/feed" className="btn btn-ghost normal-case text-xl text-black">.Connect</Link>
         </div>
@@ -67,12 +67,14 @@ const NavBar = () => {
                 </li>
                 <li><Link to="/connections">Connections</Link></li>
                 <li><Link to="/requests">Requests</Link></li>
+                <li><Link to="/newPost">Add Post</Link></li>
                 <li onClick={handleLogout}><a>Logout</a></li>
             </ul>
             </div>
         </div>)}
         </div>
 </div>
+
   )
 }
 
