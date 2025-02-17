@@ -9,6 +9,7 @@ import Connections from "./components/Connections";
 import 'react-toastify/dist/ReactToastify.css'
 import Requests from "./components/Requests";
 import AddNewPost from "./components/AddNewPost";
+import SomeOnesProfile from "./components/SomeOnesProfile";
 export default function App() {
   return (
     <>
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/connections" element={<Connections/>}/>
           <Route path="/newPost" element={<AddNewPost/>}/>
           <Route path="/requests" element={<Requests/>}/>
+          <Route path="/someonesprofile" element={<SomeOnesProfile/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

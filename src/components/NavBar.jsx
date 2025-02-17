@@ -44,13 +44,44 @@ const NavBar = () => {
     
     
   return (
-    <div>
-        <div className="navbar navbar-center bg-blue-100">
-        <div className="flex-1">
+    <div className='w-full fixed top-0 bg-base-100 text-white border-b border-gray-600 bg-gray-800'>
+        <div className='flex justify-between items-center pl-5'>
+        <div>
+        <Link to="/feed" className="btn btn-ghost normal-case text-xl">.Connect</Link>
+        </div>
+        <div className='self-end'>
+        {user && ( <div className="flex items-center pr-2">
+        <p className='pr-3'>Welcome {user && user?.firstName}</p> 
+        <div className="dropdown dropdown-end items-center">
+           
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            
+                <div className="w-10 rounded-full">
+                <img src={user.photoUrl||"https://static.vecteezy.com/system/resources/previews/021/548/095/non_2x/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg"}/>
+                </div>
+            </label>
+            <ul tabIndex={0} className=" text-white mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                <li>
+                <Link to="/profile" className="justify-between">
+                    Profile
+                </Link>
+                </li>
+                <li><Link to="/connections">Connections</Link></li>
+                <li><Link to="/requests">Requests</Link></li>
+                <li><Link to="/newPost">Add Post</Link></li>
+                <li onClick={handleLogout}><a>Logout</a></li>
+            </ul>
+            </div>
+        </div>)}
+        </div>
+        </div>
+        
+        {/* <div className="flex w-full bg-blue-100">
+        <div className="flex">
             <Link to="/feed" className="btn btn-ghost normal-case text-xl text-black">.Connect</Link>
         </div>
-        {user && ( <div className="flex gap-2">
-        <p className="px-4 text-black">Welcome {user && user?.firstName}</p> 
+        {user && ( <div className="flex">
+        <p className=" text-black">Welcome {user && user?.firstName}</p> 
         <div className="dropdown dropdown-end items-center">
            
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -72,7 +103,7 @@ const NavBar = () => {
             </ul>
             </div>
         </div>)}
-        </div>
+        </div> */}
 </div>
 
   )

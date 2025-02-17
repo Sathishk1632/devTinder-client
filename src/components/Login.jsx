@@ -54,8 +54,8 @@ const Login = () => {
     }
 
   return (
-    <div className="flex justify-center mt-10">
-        <div className="card w-96 bg-base-100 shadow-xl border-2 border-blue-200">
+    <div className="flex justify-center items-center h-full my-40">
+        <div className="card w-96 bg-gray-800 shadow-xl border-1 border-blue-200">
             <div className="card-body items-center text-center">
                 <h1 className="card-title">{isLoginForm?"Login":"Sign Up"}</h1>
                 <div>

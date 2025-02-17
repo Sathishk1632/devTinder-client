@@ -20,9 +20,11 @@ const Body = () =>{
     fetchUser();
   })
   return (
-    <div className='bg-transparent'>
+    <div>
         <NavBar/>
-        <Outlet/>
+        <div>
+        <Outlet />
+        </div>
         <Footer/>
     </div>
   )

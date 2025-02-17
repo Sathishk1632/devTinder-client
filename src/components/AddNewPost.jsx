@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { BASEURL } from '../utils/Constants';
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewPost = () => {
+  const navigate=useNavigate();
   const [selectedImage, setSelectedImage] = useState(null);
   const [caption, setCaption] = useState("");
 
@@ -18,7 +21,12 @@ const AddNewPost = () => {
 
     try {
       const res = await axios.post(`${BASEURL}/user/newPost`, formData, { withCredentials: true });
-      console.log(res.data);
+      if(res){
+        toast.success("Post Uploaded....")
+        setTimeout(()=>{
+          navigate('/profile')
+        },2000)
+      }
     } catch (error) {
       console.error('Error uploading file:', error);
     }
@@ -41,6 +49,7 @@ const AddNewPost = () => {
           <input type="text" value={caption} placeholder="Add caption to Post" className="input input-bordered w-full max-w-xs" onChange={(e) => setCaption(e.target.value)} disabled={!selectedImage} />
           <div className="card-actions justify-end">
             <button className="btn btn-primary" disabled={!selectedImage || !caption} onClick={handleNewPost}>Post</button>
+            <ToastContainer/>
           </div>
         </div>
       </div>

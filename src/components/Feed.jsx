@@ -20,13 +20,14 @@ const Feed = () => {
 
 
 return (
+ 
     feed && feed.length>0?(
-    <div className=" h-auto flex justify-center items-center my-10">
-    <UserCard user={feed[0]}/>
-    </div>
-    ): (
-      <p className='text-green-700 text-center my-20'>You have all Caught up in your Connections...</p>
-    )
+      <div className="flex justify-center items-center">
+      <UserCard user={feed[0]}/>
+      </div>
+      ): (
+        <p className='text-green-700 text-center my-40'>You have all Caught up in your Connections...</p>
+      )
   )
 }
 
